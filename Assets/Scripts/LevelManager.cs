@@ -9,12 +9,9 @@ public class LevelManager : MonoBehaviour {
 	public Text scoreText;
 
 	private int score = 0;
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown (KeyCode.R)) {
-			frog.GetComponent<Frog> ().StartMoving (startDirection);
-		}
+
+	private void StartLevel() {
+		frog.GetComponent<Frog> ().StartMoving (startDirection);
 	}
 
 	private void AddScore() {
