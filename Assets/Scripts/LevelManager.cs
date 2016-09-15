@@ -6,9 +6,15 @@ public class LevelManager : MonoBehaviour {
 
 	public Vector3 startDirection;
 	public GameObject frog;
-	public Text scoreText;
+	public GameObject GuiManager;
 
-	private int score = 0;
+	private int score;
+
+	void Start() {
+		score = 0;
+
+		GuiManager.SendMessage ("PrepareInitialGui");
+	}
 
 	private void StartLevel() {
 		frog.GetComponent<Frog> ().StartMoving (startDirection);
@@ -16,9 +22,7 @@ public class LevelManager : MonoBehaviour {
 
 	private void AddScore() {
 		score += 1;
-		scoreText.text = string.Format ("Score: {0}", score);
-		LeanTween.colorText (scoreText.GetComponent<RectTransform> (), Color.red, 0.4f)
-			.setEase(LeanTweenType.easeShake)
-			.setLoopPingPong(1);
+
+		GuiManager.SendMessage ("UpdateScore", score);
 	}
 }
