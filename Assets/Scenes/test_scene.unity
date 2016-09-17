@@ -455,6 +455,11 @@ Prefab:
       propertyPath: startButton
       value: 
       objectReference: {fileID: 2049390996}
+    - target: {fileID: 114000011266836794, guid: b917d0f68f49c426dbd9d545854dcd7b,
+        type: 2}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 875558107}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b917d0f68f49c426dbd9d545854dcd7b, type: 2}
   m_IsPrefabParent: 0
@@ -559,7 +564,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -1359,7 +1364,7 @@ Prefab:
     - target: {fileID: 114000012384846568, guid: e5b2cab43ca914b51ab410cb36277313,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: HideStartButton
+      value: OnStartButtonClick
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114000012436159594, guid: e5b2cab43ca914b51ab410cb36277313, type: 2}

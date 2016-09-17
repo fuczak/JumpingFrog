@@ -19,9 +19,10 @@ public class GuiManager : MonoBehaviour {
 	private void PrepareInitialGui() {
 		LeanTween.move (topPanel, Vector3.zero, tweenTime).setEase (easing);
 		LeanTween.move (bottomPanel, Vector3.zero, tweenTime).setEase (easing);
+
 	}
 
-	private void HideStartButton() {
+	private void OnStartButtonClick() {
 		startButton.interactable = false;
 
 		LeanTween.alphaText (startButton.GetComponentInChildren<Text> ().GetComponent<RectTransform> (), 0, tweenTime)
@@ -30,6 +31,9 @@ public class GuiManager : MonoBehaviour {
 				LeanTween.move(startButton.GetComponent<RectTransform>(), new Vector3(0, topPanel.rect.height, 10), tweenTime)
 					.setEase(easing);
 		});
+
+		LeanTween.move (Camera.main.gameObject, new Vector3 (-3f, 5f, -3f), tweenTime).setEase (easing);
+		LeanTween.rotateLocal (Camera.main.gameObject, new Vector3 (45f, 45f, 0), tweenTime).setEase (easing);
 
 		scoreText.gameObject.SetActive (true);
 	}
