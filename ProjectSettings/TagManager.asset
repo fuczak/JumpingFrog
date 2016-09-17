@@ -8,6 +8,7 @@ TagManager:
   - Arrow
   - LevelManager
   - GUI
+  - ArrowCard
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Walkable
   - 
   - 
   - 

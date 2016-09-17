@@ -8,16 +8,16 @@ public class Arrow : MonoBehaviour {
 	public float tweenDistance;
 	public GameObject model;
 
-	void Start() {
-		LeanTween.move (model, model.transform.position + (directionChange * tweenDistance), tweenTime)
-			.setEase (LeanTweenType.easeInOutCubic)
-			.setLoopPingPong (-1);
-	}
-
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag ("Frog")) {
 			other.GetComponent<Frog> ().ChangeDirection (directionChange);
 			gameObject.SetActive (false);
 		}
+	}
+
+	public void StartMoving() {
+		LeanTween.move (model, model.transform.position + (directionChange * tweenDistance), tweenTime)
+			.setEase (LeanTweenType.easeInOutCubic)
+			.setLoopPingPong (-1);
 	}
 }
