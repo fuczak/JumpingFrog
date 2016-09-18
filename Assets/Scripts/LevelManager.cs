@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour {
 
 	public Vector3 startDirection;
-	public GameObject frog;
+	public Frog frog;
 	public GameObject GuiManager;
 
 	private int score;
@@ -17,12 +17,17 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	private void StartLevel() {
-		frog.GetComponent<Frog> ().StartMoving (startDirection);
+		frog.StartMoving (startDirection);
 	}
 
 	private void AddScore() {
 		score += 1;
 
 		GuiManager.SendMessage ("UpdateScore", score);
+	}
+
+	private void PlayerReachedFinishBlock() {
+		frog.ChangeDirection (Vector3.zero);
+		Debug.Log ("Game over");
 	}
 }

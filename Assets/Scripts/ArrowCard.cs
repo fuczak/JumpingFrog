@@ -27,8 +27,8 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	}
 
 	public void OnEndDrag(PointerEventData data) {
-		if (hit.transform != null) {
-			hit.transform.GetComponent<Tile> ().PlaceObject (arrow);
+		if (hit.transform != null && hit.transform != null) {
+			hit.transform.GetComponent<Tile> ().PlaceObject ();
 			arrow.GetComponent<Arrow> ().StartMoving ();
 		}
 	}

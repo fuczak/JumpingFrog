@@ -3,20 +3,18 @@ using System.Collections;
 
 public class Tile : MonoBehaviour {
 
-	private GameObject gameObj;
+	public bool canReceiveObject;
 	private bool isEmpty = true;
 
 	public bool CanPlaceArrow() {
-		return isEmpty;
+		return isEmpty && canReceiveObject;
 	}
 
-	public void PlaceObject(GameObject GO) {
-		gameObj = GO;
+	public void PlaceObject() {
 		isEmpty = false;
 	}
 
 	public void RemoveObject() {
-		gameObj = null;
 		isEmpty = true;
 	}
 
