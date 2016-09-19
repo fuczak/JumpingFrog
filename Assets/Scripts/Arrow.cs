@@ -9,7 +9,7 @@ public class Arrow : MonoBehaviour {
 	public GameObject model;
 
 	private BoxCollider coll;
-	private WalkableTile tile;
+	private WalkableTile occupiedTile;
 
 	[HideInInspector]
 	public Vector3 startingPos;
@@ -33,22 +33,25 @@ public class Arrow : MonoBehaviour {
 	public void StartMoving() {
 
 		coll.enabled = true;
-
+		Debug.Log (model.transform.position);
 		LeanTween.move (model, model.transform.position + (directionChange * tweenDistance), tweenTime)
 			.setEase (LeanTweenType.easeInOutCubic)
 			.setLoopPingPong (-1);
 	}
 
 	public void PlaceOnTile(WalkableTile tile) {
-		this.tile = tile;
+		occupiedTile = tile;
+		Debug.Log (tile.transform.position);
+		transform.position = new Vector3 (occupiedTile.transform.position.x, 0, occupiedTile.transform.position.z);
 		tile.PlaceObject ();
 		StartMoving ();
 	}
 
 	public void ReturnToStartingPosition() {
 		coll.enabled = false;
-		if (tile != null) {
-			tile.RemoveObject ();
+
+		if (occupiedTile != null) {
+			occupiedTile.RemoveObject ();
 		}
 
 		LeanTween.cancel (model);
