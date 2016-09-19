@@ -4,7 +4,7 @@ using System.Collections;
 public class WalkableTile : MonoBehaviour {
 
 	private bool canReceiveObject = true;
-	private bool isEmpty = true;
+	public bool isEmpty = true;
 
 	private MeshRenderer highlight;
 
