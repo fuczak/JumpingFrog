@@ -14,9 +14,10 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private Vector3 startingPos;
 
 	public void OnBeginDrag(PointerEventData data) {
+		startingPos = Camera.main.ScreenToWorldPoint(data.position);
 		arrow = (GameObject) Instantiate (arrowPrefab, data.position, Quaternion.identity);
+		arrow.GetComponent<Arrow> ().startingPos = startingPos;
 		arrow.SetActive (true);
-		startingPos = data.position;
 
 		field.SendMessage ("HighlightTiles", true);
 	}
@@ -40,14 +41,9 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 	public void OnEndDrag(PointerEventData data) {
 		if (hit.transform != null && hit.transform.GetComponent<WalkableTile> () != null) {
-			hit.transform.GetComponent<WalkableTile> ().PlaceObject ();
-			arrow.GetComponent<Arrow> ().StartMoving ();
+			arrow.GetComponent<Arrow> ().PlaceOnTile (hit.transform.GetComponent<WalkableTile> ());
 		} else {
-			LeanTween.move (arrow, Camera.main.ScreenToWorldPoint (startingPos), 0.3f)
-				.setEase (LeanTweenType.easeOutCubic)
-				.setOnComplete (() => {
-				DestroyObject (arrow);
-			});
+			arrow.GetComponent<Arrow> ().ReturnToStartingPosition();
 		}
 
 		field.SendMessage ("HighlightTiles", false);

@@ -14,9 +14,7 @@ public class Field : MonoBehaviour {
 
 	private void HighlightTiles(bool shouldHighlight) {
 		foreach (WalkableTile tile in walkableTiles) {
-			if (tile.CanPlaceArrow()) {
-				tile.HighlightTile (shouldHighlight);
-			}
+			tile.HighlightTile (shouldHighlight);
 		}
 	}
 

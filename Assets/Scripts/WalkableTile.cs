@@ -13,7 +13,8 @@ public class WalkableTile : MonoBehaviour {
 	}
 
 	public void HighlightTile(bool shouldHighlight) {
-		highlight.enabled = shouldHighlight;
+		highlight.enabled = shouldHighlight && CanPlaceArrow();
+
 	}
 		
 	public bool CanPlaceArrow() {
