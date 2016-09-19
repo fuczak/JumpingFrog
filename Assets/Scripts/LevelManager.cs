@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour {
 
 	public Vector3 startDirection;
+	public float[] arrowNumbers = new float[4];
 	public Frog frog;
 	public GameObject GuiManager;
 
@@ -13,7 +14,7 @@ public class LevelManager : MonoBehaviour {
 	void Start() {
 		score = 0;
 
-		GuiManager.SendMessage ("PrepareInitialGui");
+		GuiManager.SendMessage ("PrepareInitialGui", arrowNumbers);
 	}
 
 	private void StartLevel() {
