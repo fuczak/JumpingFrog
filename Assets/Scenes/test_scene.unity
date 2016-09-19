@@ -877,12 +877,12 @@ Prefab:
     - target: {fileID: 114000011266836794, guid: b917d0f68f49c426dbd9d545854dcd7b,
         type: 2}
       propertyPath: tweenTime
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 114000011266836794, guid: b917d0f68f49c426dbd9d545854dcd7b,
         type: 2}
       propertyPath: easing
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114000011266836794, guid: b917d0f68f49c426dbd9d545854dcd7b,
         type: 2}

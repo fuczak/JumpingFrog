@@ -12,6 +12,7 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private GameObject arrow;
 	private RaycastHit hit;
 	private Vector3 startingPos;
+	private bool isOnGrid = false;
 
 	public void OnBeginDrag(PointerEventData data) {
 		startingPos = Camera.main.ScreenToWorldPoint(data.position);
@@ -32,9 +33,17 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 		    hit.transform.GetComponent<WalkableTile> () != null &&
 		    hit.transform.GetComponent<WalkableTile> ().CanPlaceArrow ()) {
 
+			isOnGrid = true;
+
 			LeanTween.move (arrow, new Vector3 (hit.transform.position.x, 0, hit.transform.position.z), 0.3f)
 				.setEase (LeanTweenType.easeOutCirc);
+		} else if (isOnGrid) {
+			isOnGrid = false;
+
+			LeanTween.move (arrow, new Vector3 (worldPos.x, 0, worldPos.z), 0.3f)
+				.setEase (LeanTweenType.easeOutCirc);			
 		} else {
+			LeanTween.cancel (arrow);
 			arrow.transform.position = new Vector3 (worldPos.x, 0.5f, worldPos.z);
 		}
 	}
