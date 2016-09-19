@@ -31,9 +31,8 @@ public class Arrow : MonoBehaviour {
 	}
 
 	public void StartMoving() {
-
 		coll.enabled = true;
-		Debug.Log (model.transform.position);
+
 		LeanTween.move (model, model.transform.position + (directionChange * tweenDistance), tweenTime)
 			.setEase (LeanTweenType.easeInOutCubic)
 			.setLoopPingPong (-1);
@@ -41,7 +40,7 @@ public class Arrow : MonoBehaviour {
 
 	public void PlaceOnTile(WalkableTile tile) {
 		occupiedTile = tile;
-		Debug.Log (tile.transform.position);
+
 		transform.position = new Vector3 (occupiedTile.transform.position.x, 0, occupiedTile.transform.position.z);
 		tile.PlaceObject ();
 		StartMoving ();
