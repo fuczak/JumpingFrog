@@ -13,6 +13,8 @@ public class Arrow : MonoBehaviour {
 
 	[HideInInspector]
 	public Vector3 startingPos;
+	[HideInInspector]
+	public ArrowCard parent;
 
 	void Start() {
 		coll = GetComponent<BoxCollider> ();
@@ -27,6 +29,7 @@ public class Arrow : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
+		parent.CardNumberValue += 1;
 		ReturnToStartingPosition ();
 	}
 

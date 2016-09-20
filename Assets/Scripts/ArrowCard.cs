@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
 
@@ -15,16 +16,53 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	private Vector3 startingPos;
 	private bool isOnGrid = false;
 
+	private Text cardNumberText;
+	private int _cardNumberValue = 0;
+	public int CardNumberValue {
+		get {
+			return _cardNumberValue;
+		}
+		set {
+			_cardNumberValue = value;
+			SetCardNumberText (_cardNumberValue);
+		}
+	}
+
+	void Start() {
+		cardNumberText = GetComponentInChildren<Text> ();
+	}
+
+	public void SetCardNumber(int value) {
+		CardNumberValue = value;
+	}
+
+	private void SetCardNumberText(int value) {
+		cardNumberText.text = string.Format ("x {0}", value);
+	}
+
+	private bool IsDragable() {
+		return CardNumberValue > 0;
+	}
+
 	public void OnBeginDrag(PointerEventData data) {
+		if (!IsDragable ()) {
+			return;
+		}
+
+		CardNumberValue -= 1;
 		startingPos = Camera.main.ScreenToWorldPoint(data.position);
 		arrow = (GameObject) Instantiate (arrowPrefab, data.position, Quaternion.identity);
 		arrow.GetComponent<Arrow> ().startingPos = startingPos;
+		arrow.GetComponent<Arrow> ().parent = GetComponent<ArrowCard> ();
 		arrow.SetActive (true);
 
 		field.SendMessage ("HighlightTiles", true);
 	}
 
 	public void OnDrag(PointerEventData data) {
+		if (arrow == null)
+			return;
+
 		Ray ray = Camera.main.ScreenPointToRay (data.position);
 		Physics.Raycast (ray, out hit, Mathf.Infinity, layerMask);
 
@@ -50,6 +88,9 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	}
 
 	public void OnEndDrag(PointerEventData data) {
+		if (arrow == null)
+			return;
+
 		LeanTween.cancel (arrow);
 
 		if (hit.transform != null
@@ -58,7 +99,10 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 			arrow.GetComponent<Arrow> ().PlaceOnTile (hit.transform.GetComponent<WalkableTile> ());
 		} else {
 			arrow.GetComponent<Arrow> ().ReturnToStartingPosition();
+			CardNumberValue += 1;
 		}
+
+		arrow = null;
 
 		field.SendMessage ("HighlightTiles", false);
 	}

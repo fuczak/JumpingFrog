@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour {
 
 	public Vector3 startDirection;
-	public float[] arrowNumbers = new float[4];
+	public int[] arrowNumbers = new int[4];
 	public Frog frog;
 	public GuiManager GuiManager;
 
