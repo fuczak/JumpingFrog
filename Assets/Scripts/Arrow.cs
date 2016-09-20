@@ -55,8 +55,8 @@ public class Arrow : MonoBehaviour {
 
 		LeanTween.cancel (model);
 
-		LeanTween.move (model, startingPos, 0.3f)
-			.setEase (LeanTweenType.easeOutCubic)
+		LeanTween.move (model, startingPos, 0.5f)
+			.setEase (LeanTweenType.easeInOutCubic)
 			.setOnComplete (() => {
 				DestroyObject (gameObject);
 			});

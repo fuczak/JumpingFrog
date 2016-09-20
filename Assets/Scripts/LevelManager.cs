@@ -7,7 +7,7 @@ public class LevelManager : MonoBehaviour {
 	public Vector3 startDirection;
 	public float[] arrowNumbers = new float[4];
 	public Frog frog;
-	public GameObject GuiManager;
+	public GuiManager GuiManager;
 
 	private int score;
 

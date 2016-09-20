@@ -32,8 +32,11 @@ public class GuiManager : MonoBehaviour {
 					.setEase(easing);
 		});
 
-		LeanTween.move (Camera.main.gameObject, new Vector3 (-3f, 5f, -3f), tweenTime).setEase (easing);
-		LeanTween.rotateLocal (Camera.main.gameObject, new Vector3 (45f, 45f, 0), tweenTime).setEase (easing);
+		LeanTween.move (Camera.main.gameObject, new Vector3 (-3f, 5f, -3f), tweenTime)
+			.setEase (easing)
+			.setDelay (tweenTime / 2);
+		LeanTween.rotateLocal (Camera.main.gameObject, new Vector3 (45f, 45f, 0), tweenTime)
+			.setEase (easing);
 
 		scoreText.gameObject.SetActive (true);
 	}
@@ -45,5 +48,4 @@ public class GuiManager : MonoBehaviour {
 			.setEase(LeanTweenType.easeShake)
 			.setLoopPingPong(1);
 	}
-
 }

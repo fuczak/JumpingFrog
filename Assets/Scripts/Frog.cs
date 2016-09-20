@@ -33,6 +33,7 @@ public class Frog : MonoBehaviour {
 	public void ChangeDirection(Vector3 newDirection) {
 		float turnAngle = Vector3.Angle (moveDirection, newDirection);
 		float turnSign = Vector3.Cross (moveDirection, newDirection).y;
+		turnSign = turnSign == 0 ? 1 : turnSign;
 
 		moveDirection = newDirection;
 		LeanTween.rotateAroundLocal (gameObject, Vector3.up, turnAngle * turnSign, turnTime).setEase(LeanTweenType.easeInOutCirc);

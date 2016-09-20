@@ -58,7 +58,7 @@ GameObject:
   - 222: {fileID: 222000012347736358}
   - 114: {fileID: 114000014135211930}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,6 +219,7 @@ GameObject:
   - 223: {fileID: 223000012878732740}
   - 114: {fileID: 114000012308794408}
   - 114: {fileID: 114000012007982134}
+  - 114: {fileID: 114000013908109166}
   m_Layer: 5
   m_Name: GUI
   m_TagString: GUI
@@ -1187,6 +1188,23 @@ MonoBehaviour:
   m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+--- !u!114 &114000013908109166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012619469266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86b5579069e6e4ff5a2ca073e1d07e53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 114000014135211930}
+  topPanel: {fileID: 224000014076938950}
+  bottomPanel: {fileID: 224000010248263196}
+  startButton: {fileID: 114000012384846568}
+  tweenTime: 0.5
+  easing: 7
 --- !u!114 &114000013951666174
 MonoBehaviour:
   m_ObjectHideFlags: 1

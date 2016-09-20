@@ -8,6 +8,7 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	public GameObject arrowPrefab;
 	public LayerMask layerMask;
 	public Field field;
+	public GuiManager GuiManager;
 
 	private GameObject arrow;
 	private RaycastHit hit;
@@ -51,7 +52,9 @@ public class ArrowCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 	public void OnEndDrag(PointerEventData data) {
 		LeanTween.cancel (arrow);
 
-		if (hit.transform != null && hit.transform.GetComponent<WalkableTile> () != null) {
+		if (hit.transform != null
+			&& hit.transform.GetComponent<WalkableTile> () != null
+			&& hit.transform.GetComponent<WalkableTile>().CanPlaceArrow()) {
 			arrow.GetComponent<Arrow> ().PlaceOnTile (hit.transform.GetComponent<WalkableTile> ());
 		} else {
 			arrow.GetComponent<Arrow> ().ReturnToStartingPosition();
