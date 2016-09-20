@@ -10,9 +10,13 @@ public class Fly : MonoBehaviour {
 	public Transform center;
 
 	private GameObject levelManager;
+	private AudioSource audio;
+	private MeshRenderer renderer;
 
 	void Start() {
 		levelManager = GameObject.FindGameObjectWithTag ("LevelManager");
+		audio = GetComponent<AudioSource> ();
+		renderer = GetComponent<MeshRenderer> ();
 	}
 
 	void Update() {
@@ -22,10 +26,11 @@ public class Fly : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
 		if (other.CompareTag ("Frog")) {
-			Destroy (gameObject);
+			audio.Play ();
+			renderer.enabled = false;
+			Destroy (gameObject, audio.clip.length);
+			levelManager.SendMessage ("AddScore");
 		}
-
-		levelManager.SendMessage ("AddScore");
 	}
 
 	private Vector3 GetDesiredPosition() {

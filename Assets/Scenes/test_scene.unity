@@ -384,42 +384,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4000012159471488, guid: 2583f0f04e94748aca351378bb863124, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012981676896, guid: 2583f0f04e94748aca351378bb863124,
-        type: 2}
-      propertyPath: turnTime
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 65000012345839832, guid: 2583f0f04e94748aca351378bb863124,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 65000012345839832, guid: 2583f0f04e94748aca351378bb863124,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 65000012345839832, guid: 2583f0f04e94748aca351378bb863124,
-        type: 2}
-      propertyPath: m_Size.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 65000012345839832, guid: 2583f0f04e94748aca351378bb863124,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114000012981676896, guid: 2583f0f04e94748aca351378bb863124,
-        type: 2}
-      propertyPath: moveTime
-      value: 0.75
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 95000012822891342, guid: 2583f0f04e94748aca351378bb863124, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2583f0f04e94748aca351378bb863124, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &440488462
@@ -1499,6 +1464,16 @@ Prefab:
     - target: {fileID: 4000014085197358, guid: 9c70f3bd0f5f745f98d2fd763edeeb6c, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000012700045766, guid: 9c70f3bd0f5f745f98d2fd763edeeb6c,
+        type: 2}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 82000012700045766, guid: 9c70f3bd0f5f745f98d2fd763edeeb6c,
+        type: 2}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c70f3bd0f5f745f98d2fd763edeeb6c, type: 2}

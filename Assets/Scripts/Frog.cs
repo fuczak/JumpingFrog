@@ -10,12 +10,14 @@ public class Frog : MonoBehaviour {
 
 	private Vector3 moveDirection;
 	private bool shouldMove = false;
+	private AudioSource audio;
 
 	private Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		audio = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -48,6 +50,8 @@ public class Frog : MonoBehaviour {
 		Vector3	endPos = startPos + moveDirection;
 
 		WaitForEndOfFrame wait = new WaitForEndOfFrame ();
+
+		audio.Play ();
 
 		while (timer <= moveTime) {
 			Vector3 newPosition = Vector3.Lerp (startPos, endPos, moveCurve.Evaluate (timer / moveTime));
